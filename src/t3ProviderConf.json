@@ -1,0 +1,44 @@
+{
+  "extkey" : "extkeyprovider",
+  "briefTitle" : "Brief title",
+  "description" : "Brief description",
+
+  "category" : "misc",
+	"shy" : "0",
+	"version" : "0.0.1",
+	"dependencies" : "cms,extbase,fluid,flux,fluidpages,fluidcontent,vhs",
+	"conflicts" : "",
+	"priority" : "",
+	"loadOrder" : "",
+	"module" : "",
+	"state" : "experimental",
+	"uploadfolder" : "0",
+	"createDirs" : "",
+	"modify_tables" : "",
+	"clearcacheonload" : "1",
+	"lockType" : "",
+	"author" : "Daniel Pfisterer",
+	"author_email" : "info@daniel-pfisterer.de",
+	"author_company" : "",
+	"CGLcompliance" : "",
+	"CGLcompliance_note" : "",
+	"constraints" : {
+	   "depends" : {
+			"typo3" : "",
+			"cms" : "",
+			"extbase" : "",
+			"fluid" : "",
+			"flux" : "",
+			"fluidpages" : "",
+			"fluidcontent" : "",
+			"vhs" : ""
+		},
+		"conflicts" : {
+		},
+		"suggests" : {
+		}
+	},
+	"_md5_values_when_last_written" : "",
+	"suggests" : {
+  }
+}

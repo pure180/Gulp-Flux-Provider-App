@@ -1,0 +1,12 @@
+{
+  "path" : {
+    "src" : "./src",
+    "dist" : "./dist"
+  },
+  "t3path" : {
+    "Root" : "./src/t3Provider/",
+    "Classes" : "./src/t3Provider/Classes",
+    "Configuration" : "./src/t3Provider/Configuration",
+    "Resources" : "./src/t3Provider/Resources"
+  }
+}

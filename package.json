@@ -1,0 +1,27 @@
+{
+  "name": "Gulp-Flux-Provider-App",
+  "version": "1.0.0",
+  "description": "Brief title",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Brief",
+    "description"
+  ],
+  "author": "Daniel Pfisterer <info@daniel-pfisterer.de>",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-header": "^1.2.2",
+    "gulp-load-plugins": "^0.8.0"
+  },
+  "dependencies": {
+    "gulp": "^3.8.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Gulp-Flux-Provider-App"
+  }
+}
