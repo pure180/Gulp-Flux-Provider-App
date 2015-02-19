@@ -14,7 +14,7 @@ module.exports = function (gulp, plugins) {
       '',
       'TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility::addStaticFile($_EXTKEY, \'Configuration/TypoScript\', \'<%= pkg.briefTitle %>\');',
       'Tx_Flux_Core::registerProviderExtensionKey(\'<%= pkg.extkey %>\', \'Page\');',
-      'Tx_Flux_Core::registerProviderExtensionKey(\'extkeyprovider\', \'Content\');'
+      'Tx_Flux_Core::registerProviderExtensionKey(\'<%= pkg.extkey %>\', \'Content\');'
 
     ].join('\n');
 
