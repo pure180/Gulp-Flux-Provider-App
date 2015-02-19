@@ -8,5 +8,8 @@
     "Classes" : "./src/t3Provider/Classes",
     "Configuration" : "./src/t3Provider/Configuration",
     "Resources" : "./src/t3Provider/Resources"
+  },
+  "dist" : {
+
   }
 }
