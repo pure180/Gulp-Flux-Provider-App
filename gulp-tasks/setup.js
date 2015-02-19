@@ -13,7 +13,7 @@ module.exports = function (gulp, plugins) {
     '}'
   ].join('\n');
 
-  gulp.src( srcmap.t3path.Configuration + '/TypoScript/setup.txt' )
+  return gulp.src( srcmap.t3path.Configuration + '/TypoScript/setup.txt' )
     .pipe(header(setup, { pkg: pkg } ))
     .pipe(gulp.dest( srcmap.path.dist + '/' + pkg.extkey + '/Configuration/TypoScript'));
 

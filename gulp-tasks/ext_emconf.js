@@ -67,7 +67,7 @@ module.exports = function (gulp, plugins) {
 
   ].join('\n');
 
-  gulp.src( srcmap.t3path.Root + 'ext_emconf.php' )
+  return gulp.src( srcmap.t3path.Root + 'ext_emconf.php' )
     .pipe(header(ext_emconf, { pkg: pkg } ))
     .pipe(gulp.dest( srcmap.path.dist + '/' + pkg.extkey ));
 
