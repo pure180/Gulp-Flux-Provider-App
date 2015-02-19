@@ -13,9 +13,17 @@
   "author": "Daniel Pfisterer <info@daniel-pfisterer.de>",
   "license": "ISC",
   "devDependencies": {
+    "del": "^1.1.1",
     "gulp": "^3.8.11",
+    "gulp-debug": "^2.0.0",
     "gulp-header": "^1.2.2",
-    "gulp-load-plugins": "^0.8.0"
+    "gulp-jade": "^1.0.0",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-word-count": "^0.2.0",
+    "gulp-xmlpoke": "^0.2.0",
+    "jade": "^1.9.2",
+    "run-sequence": "^1.0.2"
   },
   "dependencies": {
     "gulp": "^3.8.11"
