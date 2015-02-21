@@ -1,5 +1,5 @@
-# Gulp-Flux
-## Create Provider Extension
+# Typo3 Flux Provider
+## Creates a Typo3 Flux Provider Extension with Gulp
 
 ### Setup
 #### Requirements
@@ -21,7 +21,7 @@ Clone the repositiory to the "typo3conf" folder of your typo3 environment
 git clone git@github.com:pure180/DefaultTemplate.git
 ```
 ##### 2. Install applikation dependencies
-Navigate to the applikation folder on your computer (cd DefaultTemplate), then run:
+Run:
 ```
 npm install
 ```
@@ -79,3 +79,18 @@ Open the file `config.json` "./gulp-tasks/config.json" and adjust it to your nee
   }
 }
 ```
+##### 4. Build your extension
+run
+```
+gulp serve
+```
+
+##### What comes Next
+* Building templates with jade
+* creating css with Less
+* JsHint
+* Bootstrap 3+
+* jQuery
+* gulp-watch (build after save)
+* livereload with automatic cache clearing
+* more
