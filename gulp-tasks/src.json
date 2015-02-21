@@ -1,15 +1,23 @@
 {
-  "path" : {
-    "src" : "./src",
-    "dist" : "./dist"
-  },
-  "t3path" : {
-    "Root" : "./src/t3Provider/",
-    "Classes" : "./src/t3Provider/Classes",
-    "Configuration" : "./src/t3Provider/Configuration",
-    "Resources" : "./src/t3Provider/Resources"
-  },
-  "dist" : {
+  "in_development" : true,
 
-  }
+  "src" : "./src",
+  "dist" : "./ext",
+
+  "provider" : "/t3Provider",
+  "classes" : "/Classes",
+    "controller" : "/Controller",
+  "configuration" : "/Configuration",
+    "typoscript" : "/TypoScript",
+
+  "resources" : "/Resources",
+    "private" : "/Private",
+      "language" : "/Language",
+      "layouts" : "/Layouts",
+      "templates" : "/Templates",
+        "content" : "/Content",
+        "page" : "/Page",
+
+    "public" : "/Public",
+      "icons" : "/Icons"
 }

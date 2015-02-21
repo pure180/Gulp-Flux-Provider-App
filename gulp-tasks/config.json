@@ -3,6 +3,9 @@
   "briefTitle" : "Brief title",
   "description" : "Brief description",
   "language" : "en",
+  "type" : "template",
+  "name": "fluidtypo3/flux",
+  "homepage": "",
 
   "category" : "misc",
 	"shy" : "0",

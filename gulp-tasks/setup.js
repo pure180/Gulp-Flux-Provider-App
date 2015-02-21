@@ -1,21 +1,31 @@
 var header = require('gulp-header');
-var pkg = require('../src/t3ProviderConf.json');
-var srcmap = require('./src.json');
+var conf = require('./config.json');
+
+var p = require('./src.json');
+
+if(p.in_development === true) {
+  p.dist = './ext';
+} else {
+  p.dist = '../ext';
+}
 
 module.exports = function (gulp, plugins) {
   return function () {
 
+  var sourcefile = p.src + p.provider + p.configuration + p.typoscript + '/setup.txt';
+  var buildfile = p.dist + '/' + conf.extkey + p.configuration + p.typoscript;
+
   var setup = [
-    'plugin.tx_<%= pkg.extkey %>.view {',
-      '\ttemplateRootPath = {$plugin.tx_<%= pkg.extkey %>.view.templateRootPath}',
-      '\tpartialRootPath = {$plugin.tx_<%= pkg.extkey %>.view.partialRootPath}',
-      '\tlayoutRootPath = {$plugin.tx_<%= pkg.extkey %>.view.layoutRootPath}',
+    'plugin.tx_<%= conf.extkey %>.view {',
+      '\ttemplateRootPath = {$plugin.tx_<%= conf.extkey %>.view.templateRootPath}',
+      '\tpartialRootPath = {$plugin.tx_<%= conf.extkey %>.view.partialRootPath}',
+      '\tlayoutRootPath = {$plugin.tx_<%= conf.extkey %>.view.layoutRootPath}',
     '}'
   ].join('\n');
 
-  return gulp.src( srcmap.t3path.Configuration + '/TypoScript/setup.txt' )
-    .pipe(header(setup, { pkg: pkg } ))
-    .pipe(gulp.dest( srcmap.path.dist + '/' + pkg.extkey + '/Configuration/TypoScript'));
+  return gulp.src( sourcefile )
+    .pipe(header(setup, { conf: conf } ))
+    .pipe(gulp.dest( buildfile ));
 
     };
 };

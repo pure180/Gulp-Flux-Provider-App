@@ -1,16 +1,25 @@
 var header = require('gulp-header');
-var pkg = require('../src/t3ProviderConf.json');
-var srcmap = require('./src.json');
+var conf = require('./config.json');
+var p = require('./src.json');
+
+if(p.in_development === true) {
+  p.dist = './ext';
+} else {
+  p.dist = '../ext';
+}
 
 module.exports = function (gulp, plugins) {
   return function () {
+
+  var sourcefile = p.src + p.provider + '/ext_emconf.php';
+  var buildfile = p.dist + '/' + conf.extkey;
 
   var ext_emconf = [
 
     '<?php\n',
 
     '/***************************************************************',
-    ' * Extension Manager/Repository config file for ext "<%= pkg.extkey %>".',
+    ' * Extension Manager/Repository config file for ext "<%= conf.extkey %>".',
     '*',
     '* Auto generated ' + Date(),
     '*',
@@ -20,45 +29,45 @@ module.exports = function (gulp, plugins) {
     '***************************************************************/\n',
 
     '$EM_CONF[$_EXTKEY] = array(',
-      '\t\'title\' => \'<%= pkg.briefTitle %>\',',
-      '\t\'description\' => \'<%= pkg.description %>\',',
-      '\t\'category\' => \'<%= pkg.category %>\',',
-      '\t\'shy\' => <%= pkg.shy %>,',
-      '\t\'version\' => \'<%= pkg.version %>\',',
-      '\t\'dependencies\' => \'<%= pkg.dependencies %>\',',
-      '\t\'conflicts\' => \'<%= pkg.conflicts %>\',',
-      '\t\'priority\' => \'<%= pkg.priority %>\',',
-    	'\t\'loadOrder\' => \'<%= pkg.loadOrder %>\',',
-    	'\t\'module\' => \'<%= pkg.module %>\',',
-    	'\t\'state\' => \'<%= pkg.state %>\',',
-    	'\t\'uploadfolder\' => <%= pkg.uploadfolder %>,',
-    	'\t\'createDirs\' => \'<%= pkg.createDirs %>\',',
-    	'\t\'modify_tables\' => \'<%= pkg.modify_tables %>\',',
-    	'\t\'clearcacheonload\' => <%= pkg.clearcacheonload %>,',
-    	'\t\'lockType\' => \'<%= pkg.lockType %>\',',
-    	'\t\'author\' => \'<%= pkg.author %>\',',
-    	'\t\'author_email\' => \'<%= pkg.author_email %>\',',
-    	'\t\'author_company\' => \'<%= pkg.author_company %>\',',
-    	'\t\'CGLcompliance\' => \'<%= pkg.CGLcompliance %>\',',
-    	'\t\'CGLcompliance_note\' => \'<%= pkg.CGLcompliance_note %>\',',
+      '\t\'title\' => \'<%= conf.briefTitle %>\',',
+      '\t\'description\' => \'<%= conf.description %>\',',
+      '\t\'category\' => \'<%= conf.category %>\',',
+      '\t\'shy\' => <%= conf.shy %>,',
+      '\t\'version\' => \'<%= conf.version %>\',',
+      '\t\'dependencies\' => \'<%= conf.dependencies %>\',',
+      '\t\'conflicts\' => \'<%= conf.conflicts %>\',',
+      '\t\'priority\' => \'<%= conf.priority %>\',',
+    	'\t\'loadOrder\' => \'<%= conf.loadOrder %>\',',
+    	'\t\'module\' => \'<%= conf.module %>\',',
+    	'\t\'state\' => \'<%= conf.state %>\',',
+    	'\t\'uploadfolder\' => <%= conf.uploadfolder %>,',
+    	'\t\'createDirs\' => \'<%= conf.createDirs %>\',',
+    	'\t\'modify_tables\' => \'<%= conf.modify_tables %>\',',
+    	'\t\'clearcacheonload\' => <%= conf.clearcacheonload %>,',
+    	'\t\'lockType\' => \'<%= conf.lockType %>\',',
+    	'\t\'author\' => \'<%= conf.author %>\',',
+    	'\t\'author_email\' => \'<%= conf.author_email %>\',',
+    	'\t\'author_company\' => \'<%= conf.author_company %>\',',
+    	'\t\'CGLcompliance\' => \'<%= conf.CGLcompliance %>\',',
+    	'\t\'CGLcompliance_note\' => \'<%= conf.CGLcompliance_note %>\',',
       '\t\'constraints\' => array(',
         '\t\t\'depends\' => array(',
-          '\t\t\t\'typo3\' => \'<%= pkg.typo3 %>\',',
-          '\t\t\t\'cms\' => \'<%= pkg.cms %>\',',
-          '\t\t\t\'extbase\' => \'<%= pkg.extbase %>\',',
-          '\t\t\t\'fluid\' => \'<%= pkg.fluid %>\',',
-          '\t\t\t\'flux\' => \'<%= pkg.flux %>\',',
+          '\t\t\t\'typo3\' => \'<%= conf.typo3 %>\',',
+          '\t\t\t\'cms\' => \'<%= conf.cms %>\',',
+          '\t\t\t\'extbase\' => \'<%= conf.extbase %>\',',
+          '\t\t\t\'fluid\' => \'<%= conf.fluid %>\',',
+          '\t\t\t\'flux\' => \'<%= conf.flux %>\',',
 
-          '\t\t\t\'fluidpages\' => \'<%= pkg.fluidpages %>\',',
-          '\t\t\t\'fluidcontent\' => \'<%= pkg.fluidcontent %>\',',
-          '\t\t\t\'vhs\' => \'<%= pkg.vhs %>\',',
+          '\t\t\t\'fluidpages\' => \'<%= conf.fluidpages %>\',',
+          '\t\t\t\'fluidcontent\' => \'<%= conf.fluidcontent %>\',',
+          '\t\t\t\'vhs\' => \'<%= conf.vhs %>\',',
         '\t\t),',
         '\t\t\'conflicts\' => array(',
         '\t\t),',
         '\t\t\'suggests\' => array(',
         '\t\t),',
       '\t),',
-      '\t\'_md5_values_when_last_written\' => \'<%= pkg._md5_values_when_last_written %>\',',
+      '\t\'_md5_values_when_last_written\' => \'<%= conf._md5_values_when_last_written %>\',',
       '\t\'suggests\' => array(',
       '\t),',
     ');',
@@ -67,9 +76,9 @@ module.exports = function (gulp, plugins) {
 
   ].join('\n');
 
-  return gulp.src( srcmap.t3path.Root + 'ext_emconf.php' )
-    .pipe(header(ext_emconf, { pkg: pkg } ))
-    .pipe(gulp.dest( srcmap.path.dist + '/' + pkg.extkey ));
+  return gulp.src( sourcefile )
+    .pipe(header(ext_emconf, { conf: conf } ))
+    .pipe(gulp.dest( buildfile ));
 
     };
 };

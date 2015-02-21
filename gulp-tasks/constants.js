@@ -1,20 +1,30 @@
 var header = require('gulp-header');
-var pkg = require('../src/t3ProviderConf.json');
-var srcmap = require('./src.json');
+var conf = require('./config.json');
+
+var p = require('./src.json');
+
+if(p.in_development === true) {
+  p.dist = './ext';
+} else {
+  p.dist = '../ext';
+}
 
 module.exports = function (gulp, plugins) {
   return function () {
 
+  var sourcefile = p.src + p.provider + p.configuration + p.typoscript + '/constants.txt';
+  var buildfile = p.dist + '/' + conf.extkey + p.configuration + p.typoscript;
+
   var constants = [
-    'plugin.tx_<%= pkg.extkey %>.view {',
-    	'\ttemplateRootPath = EXT:<%= pkg.extkey %>/Resources/Private/Templates/',
-    	'\tpartialRootPath = EXT:<%= pkg.extkey %>/Resources/Private/Partials/',
-    	'\tlayoutRootPath = EXT:<%= pkg.extkey %>/Resources/Private/Layouts/',
+    'plugin.tx_<%= conf.extkey %>.view {',
+    	'\ttemplateRootPath = EXT:<%= conf.extkey %>/Resources/Private/Templates/',
+    	'\tpartialRootPath = EXT:<%= conf.extkey %>/Resources/Private/Partials/',
+    	'\tlayoutRootPath = EXT:<%= conf.extkey %>/Resources/Private/Layouts/',
     '}',
   ].join('\n');
 
-  return gulp.src( srcmap.t3path.Configuration + '/TypoScript/constants.txt' )
-    .pipe(header(constants, { pkg: pkg } ))
-    .pipe(gulp.dest( srcmap.path.dist + '/' + pkg.extkey + '/Configuration/TypoScript'));
+  return gulp.src( sourcefile )
+    .pipe(header(constants, { conf: conf } ))
+    .pipe(gulp.dest( buildfile ));
   };
 };

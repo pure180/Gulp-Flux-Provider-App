@@ -1,4 +1,5 @@
 node_modules
 dist
+ext
 tmp
 npm-debug.log
