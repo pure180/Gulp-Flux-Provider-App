@@ -80,31 +80,35 @@ Open the file `config.json` "./gulp-tasks/config.json" and adjust it to your nee
 }
 ```
 ##### 4. Build your extension
-run
+**run**
 ```
 gulp serve
 ```
-
-#### Compile Fluid Templates with *.jade
+#### Compile Fluid Templates with jade
 To build your fluid templates, just edit the files located in: `./src/Provider/Resources/Private`.
 
 Note the normal fluid syntax does not match the jade syntax. To parse working fluid syntax you will need to proceed as follows.
 If you want to write something typical fluid/flux like this:
+
 ```html
 <f:uri.action action="show" />
+```
 or
+```html
 <f:uri.action action="show">
   Your Linktext
 </f:uri.action>
 ```
-so that *.jade can compile your fluid syntax properly you need to write your code as following:
+so that .jade can compile your fluid syntax properly you need to write your code as following:
 ```jade
 f:uri::action(action="show")/
-or
-f:uri::action(action="show")
-  Your Linktext
 ```
-The two double points (::), are the word separations of the respective view-helper. With them we tell *.jade to compile our fluid syntax correctly.
+or
+```jade
+f:uri::action(action="show")
+  | Your Linktext
+```
+The two double points (::), are the word separations of the respective view-helper. With them we tell jade to compile our fluid syntax correctly.
 #####Some examples:
 **Normal Fluid Syntax:**
 ```html
@@ -115,7 +119,7 @@ The two double points (::), are the word separations of the respective view-help
 **Jade Syntax:**
 ```jade
 f:if(condition="{myvar}")
-  Condition if met
+  | Condition if met
 ```
 **Normal Fluid Syntax:**
 ```html
@@ -126,8 +130,12 @@ f:if(condition="{myvar}")
 **Jade Syntax:**
 ```jade
 f:format::html
-  foo bar. Some text.
+  | foo bar. Some text.
 ```
+
+If you need to know write jade and/or fluid syntax take look here:
+* [jade Language Reference](http://jade-lang.com/reference/)
+* [Typo3 Fluid ViewHelper reference](https://fluidtypo3.org/viewhelpers.html)
 
 ##### What comes Next
 * ~~Building templates with jade~~
