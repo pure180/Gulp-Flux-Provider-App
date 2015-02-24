@@ -115,7 +115,7 @@ Normal Fluid Syntax:
 Jade Syntax:
 f:if(condition="{myvar}")
   Condition if met
-´´´
+```
 ```jade
 Normal Fluid Syntax:
 <f:format.html>
@@ -125,7 +125,7 @@ Normal Fluid Syntax:
 Jade Syntax:
 f:format::html
   foo bar. Some text.
-´´´
+```
 
 ##### What comes Next
 * ~~Building templates with jade~~
