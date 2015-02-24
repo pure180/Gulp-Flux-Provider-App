@@ -86,7 +86,8 @@ gulp serve
 ```
 
 #### Compile Fluid Templates with *.jade
-To Build your fluid templates just edit the files located in: `./src/Provider/Resources/Private`.
+To build your fluid templates, just edit the files located in: `./src/Provider/Resources/Private`.
+
 Note the normal fluid syntax does not match the jade syntax. To parse working fluid syntax you will need to proceed as follows.
 If you want to write something typical fluid/flux like this:
 ```html
@@ -96,8 +97,35 @@ or
   Your Linktext
 </f:uri.action>
 ```
+so that *.jade can compile your fluid syntax properly you need to write your code as following:
+```jade
+f:uri::action(action="show")/
+or
+f:uri::action(action="show")
+  Your Linktext
+```
+The two double points (::), are the word separations of the respective view-helper. With them we tell *.jade to compile our fluid syntax correctly.
+Some examples:
+```jade
+Normal Fluid Syntax:
+<f:if condition="{myvar}">
+  Condition if met
+</f:if>
 
+Jade Syntax:
+f:if(condition="{myvar}")
+  Condition if met
+´´´
+```jade
+Normal Fluid Syntax:
+<f:format.html>
+  foo bar. Some text.
+</f:format.html>
 
+Jade Syntax:
+f:format::html
+  foo bar. Some text.
+´´´
 
 ##### What comes Next
 * ~~Building templates with jade~~
