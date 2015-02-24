@@ -1,0 +1,22 @@
+| {namespace flux=FluidTYPO3\Flux\ViewHelpers}
+| {namespace v=FluidTYPO3\Vhs\ViewHelpers}
+f:layout(name="Page")/
+
+f:section(name="Configuration")
+	flux:form(id="fluidpage" options="{icon: 'Icons/Page/Standard.gif'}")
+		// Insert fields, sheets, grid, form section objects etc. here, in this flux:form tag
+	flux:grid
+		// Edit this grid to change the "backend layout" structure
+		flux:grid::row
+			flux:grid::column(colPos="0" colspan="3" name="main")/
+			flux:grid::column(colPos="1" name="right")/
+
+f:section(name="Main")
+	h1 I am a page template!
+	p My template file is EXT:extensionkey/Resources/Private/Page/Standard.html.
+	div(style="float: left; width: 75%;")
+		h2 Content main
+		v:content::render(column="0")/
+	div(style="float: left; width: 25%;")
+		h2 Content right
+		v:content::render(column="1")/

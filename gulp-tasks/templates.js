@@ -1,3 +1,7 @@
+var jade = require('jade');
+var gulpjade = require('gulp-jade');
+var replace = require('gulp-replace');
+
 var conf = require('./config.json');
 var p = require('./src.json');
 
@@ -12,19 +16,33 @@ module.exports = function (gulp, plugins) {
   return function () {
 
     var sourcefile = {
-      templates : p.src + p.provider + p.resources + p.private + p.templates + '/**/*.html',
-      layouts : p.src + p.provider + p.resources + p.private + p.layouts + '/**/*.html'
+      layouts : p.src + p.provider + p.resources + p.private + p.layouts + '/**/*.jade',
+      partials : p.src + p.provider + p.resources + p.private + p.partials + '/**/*.jade',
+      templates : p.src + p.provider + p.resources + p.private + p.templates + '/**/*.jade'
     };
 
     var buildfile = {
+      layouts: p.dist + '/' + conf.extkey + p.resources + p.private + p.layouts, 
       templates : p.dist + '/' + conf.extkey + p.resources + p.private + p.templates,
-      layouts: p.dist + '/' + conf.extkey + p.resources + p.private + p.layouts
+      partials : p.dist + '/' + conf.extkey + p.resources + p.private + p.partials
     };
 
-    var templates = gulp.src(sourcefile.templates).pipe(gulp.dest( buildfile.templates ));
-    var layouts = gulp.src(sourcefile.layouts).pipe(gulp.dest( buildfile.layouts ));
+    function build(source, destination){
+      var findfluid = replace( /::/g, '.');
+      gulp.src( source )
+      .pipe(gulpjade({
+        jade: jade,
+        pretty: true,
+      }))
+      .pipe( findfluid )
+      .pipe(gulp.dest( destination ));
+    }
 
-    return templates, layouts;
+    var layouts = build(sourcefile.layouts, buildfile.layouts);
+    var partials = build(sourcefile.partials, buildfile.partials);
+    var templates = build(sourcefile.templates, buildfile.templates);
+
+    return layouts, partials, templates;
 
   };
 };
