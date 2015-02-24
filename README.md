@@ -133,7 +133,7 @@ f:format::html
   | foo bar. Some text.
 ```
 
-If you need to know write jade and/or fluid syntax take look here:
+If you need to know how to write jade and/or fluid syntax, take look here:
 * [jade Language Reference](http://jade-lang.com/reference/)
 * [Typo3 Fluid ViewHelper reference](https://fluidtypo3.org/viewhelpers.html)
 
