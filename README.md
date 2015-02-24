@@ -86,7 +86,7 @@ gulp serve
 ```
 
 ##### What comes Next
-* Building templates with jade
+* ~~Building templates with jade~~
 * creating css with Less
 * JsHint
 * Bootstrap 3+
