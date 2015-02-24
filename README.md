@@ -106,23 +106,25 @@ f:uri::action(action="show")
 ```
 The two double points (::), are the word separations of the respective view-helper. With them we tell *.jade to compile our fluid syntax correctly.
 Some examples:
-```jade
-Normal Fluid Syntax:
+**Normal Fluid Syntax:**
+```html
 <f:if condition="{myvar}">
   Condition if met
 </f:if>
-
-Jade Syntax:
+```
+**Jade Syntax:**
+```jade
 f:if(condition="{myvar}")
   Condition if met
 ```
-```jade
-Normal Fluid Syntax:
+**Normal Fluid Syntax:**
+```html
 <f:format.html>
   foo bar. Some text.
 </f:format.html>
-
-Jade Syntax:
+```
+**Jade Syntax:**
+```jade
 f:format::html
   foo bar. Some text.
 ```
