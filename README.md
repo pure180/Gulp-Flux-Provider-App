@@ -85,6 +85,20 @@ run
 gulp serve
 ```
 
+#### Compile Fluid Templates with *.jade
+To Build your fluid templates just edit the files located in: `./src/Provider/Resources/Private`.
+Note the normal fluid syntax does not match the jade syntax. To parse working fluid syntax you will need to proceed as follows.
+If you want to write something typical fluid/flux like this:
+```html
+<f:uri.action action="show" />
+or
+<f:uri.action action="show">
+  Your Linktext
+</f:uri.action>
+```
+
+
+
 ##### What comes Next
 * ~~Building templates with jade~~
 * creating css with Less
