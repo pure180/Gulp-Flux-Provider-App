@@ -105,7 +105,7 @@ f:uri::action(action="show")
   Your Linktext
 ```
 The two double points (::), are the word separations of the respective view-helper. With them we tell *.jade to compile our fluid syntax correctly.
-Some examples:
+#####Some examples:
 **Normal Fluid Syntax:**
 ```html
 <f:if condition="{myvar}">
